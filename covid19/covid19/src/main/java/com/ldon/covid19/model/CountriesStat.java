@@ -14,14 +14,14 @@ public class CountriesStat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String Country;
-    private float cases;
-    private float deaths;
-    private float totalRecovered;
-    private float newDeaths;
-    private float newCases;
-    private float criticalCases;
-    private float activeCases;
+    private String country;
+    private int cases;
+    private int deaths;
+    private int totalRecovered;
+    private int newDeaths;
+    private int newCases;
+    private int criticalCases;
+    private int activeCases;
     private BigDecimal porcentageOfPop;
 
     public long getId() {
@@ -33,66 +33,66 @@ public class CountriesStat {
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
-    public float getCases() {
+    public int getCases() {
         return cases;
     }
 
-    public void setCases(float cases) {
+    public void setCases(int cases) {
         this.cases = cases;
     }
 
-    public float getDeaths() {
+    public int getDeaths() {
         return deaths;
     }
 
-    public void setDeaths(float deaths) {
+    public void setDeaths(int deaths) {
         this.deaths = deaths;
     }
 
-    public float getTotalRecovered() {
+    public int getTotalRecovered() {
         return totalRecovered;
     }
 
-    public void setTotalRecovered(float totalRecovered) {
+    public void setTotalRecovered(int totalRecovered) {
         this.totalRecovered = totalRecovered;
     }
 
-    public float getNewDeaths() {
+    public int getNewDeaths() {
         return newDeaths;
     }
 
-    public void setNewDeaths(float newDeaths) {
+    public void setNewDeaths(int newDeaths) {
         this.newDeaths = newDeaths;
     }
 
-    public float getNewCases() {
+    public int getNewCases() {
         return newCases;
     }
 
-    public void setNewCases(float newCases) {
+    public void setNewCases(int newCases) {
         this.newCases = newCases;
     }
 
-    public float getCriticalCases() {
+    public int getCriticalCases() {
         return criticalCases;
     }
 
-    public void setCriticalCases(float criticalCases) {
+    public void setCriticalCases(int criticalCases) {
         this.criticalCases = criticalCases;
     }
 
-    public float getActiveCases() {
+    public int getActiveCases() {
         return activeCases;
     }
 
-    public void setActiveCases(float activeCases) {
+    public void setActiveCases(int activeCases) {
         this.activeCases = activeCases;
     }
 
@@ -108,7 +108,7 @@ public class CountriesStat {
     public String toString() {
         return "CountriesStat{" +
                 "id:" + id +
-                ", Country:" + Country +
+                ", Country:" + country +
                 ", cases:" + cases +
                 ", deaths:" + deaths +
                 ", totalRecovered:" + totalRecovered +

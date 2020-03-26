@@ -40,14 +40,14 @@ public class GetDataFromExternalAPI {
         for (Csco csco : cscos.getCountries_stat()) {
             CountriesStat cs = new CountriesStat();
             cs.setCountry(csco.getCountry_name());
-            cs.setCases(valueStringToFloat(csco.getCases()));
-            cs.setDeaths(valueStringToFloat(csco.getDeaths()));
-            cs.setTotalRecovered(valueStringToFloat(csco.getTotal_recovered()));
-            cs.setNewDeaths(valueStringToFloat(csco.getNew_deaths()));
-            cs.setNewCases(valueStringToFloat(csco.getNew_cases()));
-            cs.setCriticalCases(valueStringToFloat(csco.getSerious_critical()));
-            cs.setActiveCases(valueStringToFloat(csco.getActive_cases()));
-            BigDecimal x = new BigDecimal(valueStringToFloat(csco.getTotal_cases_per_1m_population()));
+            cs.setCases((int) valueStringToInt(csco.getCases()));
+            cs.setDeaths((int) valueStringToInt(csco.getDeaths()));
+            cs.setTotalRecovered((int) valueStringToInt(csco.getTotal_recovered()));
+            cs.setNewDeaths((int) valueStringToInt(csco.getNew_deaths()));
+            cs.setNewCases((int) valueStringToInt(csco.getNew_cases()));
+            cs.setCriticalCases((int) valueStringToInt(csco.getSerious_critical()));
+            cs.setActiveCases((int) valueStringToInt(csco.getActive_cases()));
+            BigDecimal x = new BigDecimal(valueStringToInt(csco.getTotal_cases_per_1m_population()));
             cs.setPorcentageOfPop(x.divide(new BigDecimal(10000)));
             countriesStatList.add(cs);
         }
@@ -55,7 +55,7 @@ public class GetDataFromExternalAPI {
     }
 
 
-    private static float valueStringToFloat(String n) {
+    private static float valueStringToInt(String n) {
         String[] a = n.split(",");
         String aux = "";
         for (String x : a) {

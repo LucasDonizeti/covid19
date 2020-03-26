@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Cases</title>
+</head>
+<body>
+Cases of Covid-19 on country of world:
+<table id="country-tb">
+    <thead>
+    <tr>
+        <th>Country</th>
+        <th>Cases</th>
+        <th>Deaths</th>
+        <th>Total Recovered</th>
+        <th>New Deaths</th>
+        <th>New Cases</th>
+        <th>Critical Cases</th>
+        <th>Active Cases</th>
+        <th>% op Population Contaminated</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="stat: ${countriesStats}">
+        <td th:text="${stat.country}"></td>
+        <td th:text="${stat.cases}"></td>
+        <td th:text="${stat.deaths}"></td>
+        <td th:text="${stat.totalRecovered}"></td>
+        <td th:text="${stat.newDeaths}"></td>
+        <td th:text="${stat.newCases}"></td>
+        <td th:text="${stat.criticalCases}"></td>
+        <td th:text="${stat.activeCases}"></td>
+        <td th:text="${stat.porcentageOfPop}+'%'"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

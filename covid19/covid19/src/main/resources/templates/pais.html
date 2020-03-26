@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Pais</title>
+</head>
+<body>
+<p th:text="'Cases of covid-19 on '+${data.country}+':'"></p>
+<p th:text="'Cases: '+${data.cases}"></p>
+<p th:text="'Deaths: '+${data.deaths}"></p>
+<p th:text="'Total Recovered: '+${data.totalRecovered}"></p>
+<p th:text="'New Deaths: '+${data.newDeaths}"></p>
+<p th:text="'New cases: '+${data.newCases}"></p>
+<p th:text="'Critical cases: '+${data.criticalCases}"></p>
+<p th:text="'Active cases: '+${data.activeCases}"></p>
+<p th:text="'% contaminated of population: '+${data.porcentageOfPop} + '%'"></p>
+
+</body>
+</html>
