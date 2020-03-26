@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 @Entity
 public class CountriesStat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
     private String country;
     private int cases;
     private int deaths;
@@ -23,14 +21,6 @@ public class CountriesStat {
     private int criticalCases;
     private int activeCases;
     private BigDecimal porcentageOfPop;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getCountry() {
         return country;
@@ -107,7 +97,6 @@ public class CountriesStat {
     @Override
     public String toString() {
         return "CountriesStat{" +
-                "id:" + id +
                 ", Country:" + country +
                 ", cases:" + cases +
                 ", deaths:" + deaths +
