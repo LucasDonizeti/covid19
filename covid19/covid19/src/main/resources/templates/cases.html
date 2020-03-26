@@ -25,7 +25,7 @@ Cases of Covid-19 on country of world:
     </thead>
     <tbody>
     <tr th:each="stat: ${countriesStats}">
-        <td th:text="${stat.country}"></td>
+        <td> <a th:text= "${stat.country}" th:href="@{/covid19/cases/} + ${stat.country}"/></td>
         <td th:text="${stat.cases}"></td>
         <td th:text="${stat.deaths}"></td>
         <td th:text="${stat.totalRecovered}"></td>
