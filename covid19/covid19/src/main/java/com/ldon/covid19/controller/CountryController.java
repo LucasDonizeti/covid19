@@ -2,7 +2,7 @@ package com.ldon.covid19.controller;
 
 import com.ldon.covid19.model.CountriesStat;
 import com.ldon.covid19.repository.CountryRepository;
-import com.ldon.covid19.service.GetDataFromExternalAPI;
+import com.ldon.covid19.service.pandemic.GetDataFromExternalAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

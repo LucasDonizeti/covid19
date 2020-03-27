@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+Menu:
+<a th:text= "Covid19" th:href="@{/covid19/cases}"/>
+<a th:text= "Currency" th:href="@{/currency/price}"/>
+</body>
+</html>

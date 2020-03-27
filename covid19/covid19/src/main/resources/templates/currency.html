@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency</title>
+</head>
+<body>
+currency quote:
+<table id="country-tb">
+    <thead>
+    <tr>
+        <th>Code to Codein</th>
+        <th>Name</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Var Bird</th>
+        <th>Ptc Change</th>
+        <th>Create Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="currency: ${currencyList}">
+        <td th:text="${currency.code} + ' to ' + ${currency.codein}"></td>
+        <td th:text="${currency.name}"></td>
+        <td th:text="${currency.high}"></td>
+        <td th:text="${currency.low}"></td>
+        <td th:text="${currency.varBid}"></td>
+        <td th:text="${currency.pctChange}"></td>
+        <td th:text="${currency.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:text= "Home" th:href="@{/home}"/>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.ldon.covid19.service;
+package com.ldon.covid19.service.pandemic;
 
 /**
  * author LucasDonizeti

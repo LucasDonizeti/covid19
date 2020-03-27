@@ -1,7 +1,9 @@
-package com.ldon.covid19.service;
+package com.ldon.covid19.service.pandemic;
 
 import com.google.gson.Gson;
 import com.ldon.covid19.model.CountriesStat;
+import com.ldon.covid19.service.pandemic.CountrieStatConvertObjects;
+import com.ldon.covid19.service.pandemic.Csco;
 
 import java.io.IOException;
 import java.math.BigDecimal;
