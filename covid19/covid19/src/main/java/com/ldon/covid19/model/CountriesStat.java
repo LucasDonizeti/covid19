@@ -21,6 +21,7 @@ public class CountriesStat {
     private int criticalCases;
     private int activeCases;
     private BigDecimal porcentageOfPop;
+    private String dateAtt;
 
     public String getCountry() {
         return country;
@@ -94,6 +95,14 @@ public class CountriesStat {
         this.porcentageOfPop = porcentageOfPop;
     }
 
+    public String getDateAtt() {
+        return dateAtt;
+    }
+
+    public void setDateAtt(String dateAtt) {
+        this.dateAtt = dateAtt;
+    }
+
     @Override
     public String toString() {
         return "CountriesStat{" +
@@ -106,6 +115,7 @@ public class CountriesStat {
                 ", criticalCases:" + criticalCases +
                 ", activeCases:" + activeCases +
                 ", porcentageOfPop:" + porcentageOfPop +
+                ", dateAtt:" + dateAtt +
                 '}';
     }
 }

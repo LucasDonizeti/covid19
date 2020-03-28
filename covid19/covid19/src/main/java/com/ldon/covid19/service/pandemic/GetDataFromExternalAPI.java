@@ -11,7 +11,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +41,9 @@ public class GetDataFromExternalAPI {
     }
 
     private static List<CountriesStat> conversion(CountrieStatConvertObjects cscos) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        String dateAtt = dateFormat.format(date);
         List<CountriesStat> countriesStatList = new ArrayList();
         for (Csco csco : cscos.getCountries_stat()) {
             CountriesStat cs = new CountriesStat();
@@ -51,7 +57,7 @@ public class GetDataFromExternalAPI {
             cs.setActiveCases((int) valueStringToInt(csco.getActive_cases()));
             BigDecimal x = new BigDecimal(valueStringToInt(csco.getTotal_cases_per_1m_population()));
             cs.setPorcentageOfPop(x.divide(new BigDecimal(10000)));
-
+            cs.setDateAtt(dateAtt);
             countriesStatList.add(cs);
         }
         return countriesStatList;
