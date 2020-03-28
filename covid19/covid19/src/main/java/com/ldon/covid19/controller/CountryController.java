@@ -48,31 +48,4 @@ public class CountryController {
         mv.addObject("data", cs);
         return mv;
     }
-
-    @GetMapping("/admin")
-    public ResponseEntity<?> saveCountries() {
-        Boolean x = saveListCountry();
-        if (x) {
-            return new ResponseEntity<>(countryDAO.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-
-    private Boolean saveListCountry() {
-
-        try {
-            List<CountriesStat> csl = GetDataFromExternalAPI.getAllData();
-            for (CountriesStat cs : csl) {
-                countryDAO.save(cs);
-            }
-            return true;
-        } catch (Exception e) {
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            System.out.println("falha ao salvar country - " + dateFormat.format(date) + " - " + e);
-            return false;
-        }
-    }
 }

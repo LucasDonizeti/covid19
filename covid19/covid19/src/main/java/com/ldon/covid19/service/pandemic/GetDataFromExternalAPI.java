@@ -51,6 +51,7 @@ public class GetDataFromExternalAPI {
             cs.setActiveCases((int) valueStringToInt(csco.getActive_cases()));
             BigDecimal x = new BigDecimal(valueStringToInt(csco.getTotal_cases_per_1m_population()));
             cs.setPorcentageOfPop(x.divide(new BigDecimal(10000)));
+
             countriesStatList.add(cs);
         }
         return countriesStatList;

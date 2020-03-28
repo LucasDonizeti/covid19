@@ -39,30 +39,4 @@ public class CurrencyPriceController {
         return mv;
     }
 
-    @GetMapping("/admin")
-    public ResponseEntity<?> saveCurrency() {
-        Boolean x = saveListCurrency();
-        if (x) {
-            return new ResponseEntity<>(currencyDAO.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-
-    private Boolean saveListCurrency() {
-
-        try {
-            List<CurrencyPrice> cp = GetCurrencyFromAwesomeApi.getCurrencyFromAwesomeApi();
-            for (CurrencyPrice currencyPrice : cp) {
-                currencyDAO.save(currencyPrice);
-            }
-            return true;
-        } catch (Exception e) {
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            System.out.println("falha ao salvar currency price - " + dateFormat.format(date) + " - " + e);
-            return false;
-        }
-    }
 }
