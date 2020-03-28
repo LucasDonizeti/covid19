@@ -16,10 +16,12 @@ import java.util.List;
  * author LucasDonizeti
  */
 public class GetFinanceFromYahoo {
-
+    public static void main(String[] args) {
+        financeCrowler();
+    }
     public static List<Indice> financeCrowler() {
         String url = "https://finance.yahoo.com/world-indices";
-        System.setProperty("webdriver.chrome.driver", "src/main/java/com/ldon/covid19/service/chromedriver_win32 (1)/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/java/com/ldon/covid19/service/driver/chromedriver_win32/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         // Maximize browser window
