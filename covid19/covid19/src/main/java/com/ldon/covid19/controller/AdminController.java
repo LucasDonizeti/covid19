@@ -2,9 +2,12 @@ package com.ldon.covid19.controller;
 
 import com.ldon.covid19.model.CountriesStat;
 import com.ldon.covid19.model.CurrencyPrice;
+import com.ldon.covid19.model.Indice;
 import com.ldon.covid19.repository.CountryRepository;
 import com.ldon.covid19.repository.CurrencyPriceRepository;
+import com.ldon.covid19.repository.IndiceRepository;
 import com.ldon.covid19.service.currency.GetCurrencyFromAwesomeApi;
+import com.ldon.covid19.service.finance.GetFinanceFromYahoo;
 import com.ldon.covid19.service.pandemic.GetDataFromExternalAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +32,9 @@ public class AdminController {
 
     @Autowired
     public CurrencyPriceRepository currencyDAO;
+
+    @Autowired
+    public IndiceRepository indiceDAO;
 
     @GetMapping()
     public ModelAndView adminHome() {
@@ -64,12 +70,40 @@ public class AdminController {
             return mv;
         }
     }
+    @GetMapping("/att/indice")
+    public ModelAndView saveIndice() {
+        Boolean x = saveListIndice();
+        ModelAndView mv=new ModelAndView("/adminatt");
+        if (x) {
+            mv.addObject("horario",horarioAtual());
+            mv.addObject("modulo","indice");
+            return mv;
+        } else {
+            mv.addObject("horario",horarioAtual());
+            mv.addObject("modulo","Falha indice");
+            return mv;
+        }
+    }
+
 
 
     private String horarioAtual(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    private Boolean saveListIndice() {
+        try {
+            List<Indice> indiceList = GetFinanceFromYahoo.financeCrowler();
+            for (Indice indice:indiceList) {
+                indiceDAO.save(indice);
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("falha ao salvar indice  - " + horarioAtual() + " - " + e);
+            return false;
+        }
     }
 
     private Boolean saveListCurrency() {

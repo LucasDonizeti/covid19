@@ -63,7 +63,6 @@ public class GetDataFromExternalAPI {
         return countriesStatList;
     }
 
-
     private static float valueStringToInt(String n) {
         String[] a = n.split(",");
         String aux = "";
@@ -72,16 +71,4 @@ public class GetDataFromExternalAPI {
         }
         return Float.parseFloat(aux);
     }
-    /*
-    private String Country;
-    private float cases;
-    private float deaths;
-    private float totalRecovered;
-    private float newDeaths;
-    private float newCases;
-    private float criticalCases;
-    private float activeCases;
-    private long porcentageOfPop;
-     */
-
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency</title>
+</head>
+<body>
+Finance:
+<table id="country-tb">
+    <thead>
+    <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Var</th>
+        <th>%Var</th>
+        <th>Date Atualization</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="indice: ${indiceList}">
+        <td th:text="${indice.simbolo}"></td>
+        <td th:text="${indice.nome}"></td>
+        <td th:text="${indice.preco}"></td>
+        <td th:text="${indice.variacao}"></td>
+        <td th:text="${indice.variacaoRange}"></td>
+        <td th:text="${indice.dateAtt}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:text= "Home" th:href="@{/home}"/>
+</body>
+</html>
