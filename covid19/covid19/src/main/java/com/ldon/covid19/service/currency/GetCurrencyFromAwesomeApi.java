@@ -15,7 +15,6 @@ import java.util.List;
  * author LucasDonizeti
  */
 public class GetCurrencyFromAwesomeApi {
-
     public static List<CurrencyPrice> getCurrencyFromAwesomeApi() throws IOException, InterruptedException {
         Gson gson = new Gson();
         HttpClient httpClient = HttpClient.newBuilder().build();
@@ -46,8 +45,9 @@ public class GetCurrencyFromAwesomeApi {
         cp.add(ccoToCp(a.getXpr()));
         return cp;
     }
-    private static CurrencyPrice ccoToCp(CurrencyPrice cco){
-        CurrencyPrice cp=new CurrencyPrice();
+
+    private static CurrencyPrice ccoToCp(CurrencyPrice cco) {
+        CurrencyPrice cp = new CurrencyPrice();
         cp.setCode(cco.getCode());
         cp.setCodein(cco.getCodein());
         cp.setName(cco.getName());
@@ -58,6 +58,4 @@ public class GetCurrencyFromAwesomeApi {
         cp.setCreateDate(cco.getCreateDate());
         return cp;
     }
-
-
 }

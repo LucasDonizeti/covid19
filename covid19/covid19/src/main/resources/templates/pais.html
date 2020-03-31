@@ -8,17 +8,16 @@
     <title>Pais</title>
 </head>
 <body>
-<p th:text="'Cases of covid-19 on '+${data.country}+':'"></p>
-<p th:text="'Cases: '+${data.cases}"></p>
-<p th:text="'Deaths: '+${data.deaths}"></p>
-<p th:text="'Total Recovered: '+${data.totalRecovered}"></p>
-<p th:text="'New Deaths: '+${data.newDeaths}"></p>
-<p th:text="'New cases: '+${data.newCases}"></p>
-<p th:text="'Critical cases: '+${data.criticalCases}"></p>
-<p th:text="'Active cases: '+${data.activeCases}"></p>
-<p th:text="'% contaminated of population: '+${data.porcentageOfPop} + '%'"></p>
-<p th:text="'Date Atualization: ' + ${data.dateAtt}"></p>
-
-<a href="/covid19/cases">All countries</a>
+    <p th:text="'Cases of covid-19 on '+${data.country}+':'"></p>
+    <p th:text="'Cases: '+${data.cases}"></p>
+    <p th:text="'Deaths: '+${data.deaths}"></p>
+    <p th:text="'Total Recovered: '+${data.totalRecovered}"></p>
+    <p th:text="'New Deaths: '+${data.newDeaths}"></p>
+    <p th:text="'New cases: '+${data.newCases}"></p>
+    <p th:text="'Critical cases: '+${data.criticalCases}"></p>
+    <p th:text="'Active cases: '+${data.activeCases}"></p>
+    <p th:text="'% contaminated of population: '+${data.porcentageOfPop} + '%'"></p>
+    <p th:text="'Date Atualization: ' + ${data.dateAtt}"></p>
+    <a href="/covid19/cases">All countries</a>
 </body>
 </html>

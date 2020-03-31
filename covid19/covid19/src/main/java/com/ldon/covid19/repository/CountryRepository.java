@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface CountryRepository extends JpaRepository<CountriesStat, Long> {
     List<CountriesStat> findByCountry(String country);
+    List<CountriesStat> findByOrderByCasesDesc();
 }

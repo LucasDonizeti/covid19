@@ -5,11 +5,16 @@
       layout:decorator="layout/LayoutPadrao">
 <head>
     <meta charset="UTF-8">
-    <title>Admin:Att</title>
+    <title>News</title>
 </head>
 <body>
-<p th:text="${modulo} + ' atualizado'"></p>
-<p th:text="'horario ' + ${horario}"></p>
-<a th:text="voltar" th:href="@{/admin}"/>
+News:
+<ul>
+    <li th:each="news : ${newsList}">
+        <h4><a th:text="${news.titulo}" th:href="${news.link}"></a></h4>
+        <h5 th:text="${news.timestamp}"></h5><br>
+    </li>
+</ul>
+<a th:text="Home" th:href="@{/home}"/>
 </body>
 </html>

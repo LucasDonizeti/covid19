@@ -21,16 +21,12 @@ public class GetFinanceFromYahoo {
         System.setProperty("webdriver.chrome.driver", "src/main/java/com/ldon/covid19/service/driver/chromedriver_win32/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
-        // Maximize browser window
         driver.manage().window().maximize();
 
-        // Navigate to URL
         driver.get(url);
 
-        // Find the table element using xpath
         WebElement table = driver.findElement(By.xpath("//*[@id=\"yfin-list\"]/div[2]/div/div/table/tbody"));
 
-        // Go through each major version
         List<WebElement> mainVersions = table.findElements(By.tagName("tr"));
         List<IndiceCO> indiceCOList = new ArrayList<>();
         for (WebElement mver : mainVersions) {
@@ -52,7 +48,6 @@ public class GetFinanceFromYahoo {
         // Close driver
         driver.quit();
         return indiceList;
-
     }
 
     private static List<Indice> toIndiceCoFromIndice(List<IndiceCO> indiceCOList) {

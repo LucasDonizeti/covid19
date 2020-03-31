@@ -7,10 +7,19 @@
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
-<body>
-Menu:
-<a th:text= "Covid19" th:href="@{/covid19/cases}"/>
-<a th:text= "Currency" th:href="@{/currency/price}"/>
-<a th:text= "Finance" th:href="@{/finance/indices}"/>
+    <body>
+    Menu:
+    <a th:text="Covid19" th:href="@{/covid19/cases}"/>
+    <a th:text="Currency" th:href="@{/currency/price}"/>
+    <a th:text="Finance" th:href="@{/finance/indices}"/>
+    <br>
+    Breaking News:<br>
+    <p><a th:text="${notices[0].titulo}" th:href="${notices[0].link}"></a></p>
+    <h5 th:text="${notices[0].timestamp}"></h5><br>
+    <p><a th:text="${notices[1].titulo}" th:href="${notices[1].link}"></a></p>
+    <h5 th:text="${notices[1].timestamp}"></h5><br>
+    <p><a th:text="${notices[2].titulo}" th:href="${notices[2].link}"></a></p>
+    <h5 th:text="${notices[2].timestamp}"></h5><br>
+    <a th:text="'For more news'" th:href="@{/news/notices}"/>
 </body>
 </html>

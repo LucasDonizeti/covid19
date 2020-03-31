@@ -39,7 +39,6 @@ public class CurrencyCO {
     @SerializedName("XRP")
     private XRP xpr;
 
-
     public USD getUsd() {
         return usd;
     }

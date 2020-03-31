@@ -26,7 +26,6 @@ public class IndiceController {
     @GetMapping("/indices")
     public ModelAndView getCases() {
         List<Indice> indiceList = indiceDAO.findAll();
-
         ModelAndView mv = new ModelAndView("/finance");
         mv.addObject("indiceList", indiceList);
         return mv;

@@ -2,8 +2,6 @@ package com.ldon.covid19.service.pandemic;
 
 import com.google.gson.Gson;
 import com.ldon.covid19.model.CountriesStat;
-import com.ldon.covid19.service.pandemic.CountrieStatConvertObjects;
-import com.ldon.covid19.service.pandemic.Csco;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -21,7 +19,6 @@ import java.util.List;
  * author LucasDonizeti
  */
 public class GetDataFromExternalAPI {
-
     public static List<CountriesStat> getAllData() throws IOException, InterruptedException {
         Gson gson = new Gson();
         HttpClient httpClient = HttpClient.newBuilder().build();
@@ -32,10 +29,8 @@ public class GetDataFromExternalAPI {
                 .setHeader("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
                 .setHeader("x-rapidapi-key", "f2f913f67cmsh0a10dab6f71d96dp17e2b0jsneb841f620a3a")
                 .build();
-
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         CountrieStatConvertObjects a = gson.fromJson(response.body(), CountrieStatConvertObjects.class);
-
         return conversion(a);
 
     }

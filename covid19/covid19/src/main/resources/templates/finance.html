@@ -23,15 +23,23 @@ Finance:
     </thead>
     <tbody>
     <tr th:each="indice: ${indiceList}">
-        <td th:text="${indice.simbolo}"></td>
+        <td th:text="${indice.simbolo}" style="color:blue"></td>
         <td th:text="${indice.nome}"></td>
         <td th:text="${indice.preco}"></td>
-        <td th:text="${indice.variacao}"></td>
-        <td th:text="${indice.variacaoRange} + '%'"></td>
+        <td th:text="${indice.variacao}"
+            th:style="'color: '+ (${indice.variacao}>0?green:(${indice.variacao}<0?red:black))"></td>
+        <td th:text="${indice.variacaoRange} + '%'"
+            th:style="'color: '+ (${indice.variacaoRange}>0?green:(${indice.variacaoRange}<0?red:black))"></td>
         <td th:text="${indice.dateAtt}"></td>
     </tr>
     </tbody>
 </table>
-<a th:text= "Home" th:href="@{/home}"/>
+<a th:text="Home" th:href="@{/home}"/>
 </body>
+<style type="text/css">
+body{
+    background:rgb(10,10,10);
+    color:rgb(250,250,250)
+    }
+</style>
 </html>
