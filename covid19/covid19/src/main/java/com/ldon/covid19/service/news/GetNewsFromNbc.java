@@ -52,13 +52,13 @@ public class GetNewsFromNbc {
         return noticias;
     }
 
-    private static String noticeTimeConvert(String timestamp) {
+    private static Date noticeTimeConvert(String timestamp) {
         timestamp = timestamp.replace("ago", "");
         String tempo = timestamp.replaceAll("[^0-9]", "");
         timestamp = timestamp.replaceAll(tempo, "");
         GregorianCalendar c = new GregorianCalendar();
         if (timestamp.compareTo("d") == 1)
             c.add(Calendar.DAY_OF_MONTH, -Integer.parseInt(tempo));
-        return new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
+        return c.getTime();
     }
 }

@@ -2,6 +2,9 @@ package com.ldon.covid19.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Date;
 
 /**
  * author LucasDonizeti
@@ -11,7 +14,8 @@ public class Notice {
     @Id
     private String link;
     private String titulo;
-    private String timestamp;
+    @Temporal(TemporalType.DATE)
+    private Date timestamp;
 
     public String getLink() {
         return link;
@@ -29,11 +33,11 @@ public class Notice {
         this.titulo = titulo;
     }
 
-    public String getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 }
