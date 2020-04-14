@@ -30,12 +30,6 @@ public class RiskAnalisysController {
 
     @PostMapping
     public ModelAndView resultado(@ModelAttribute("rad")Rad rad){
-        System.out.println("idade: " + rad.getIdade());
-        System.out.println("sexo: " + rad.getIsM());
-        System.out.println("sintomas:");
-        rad.getSintomas().forEach(s-> System.out.println(s));
-        System.out.println("doencas:");
-        rad.getDoencas().forEach(d-> System.out.println(d));
         List<String> s = rad.getSintomas();
         List<Integer> scov=new ArrayList<>();
         for (String a:s){
