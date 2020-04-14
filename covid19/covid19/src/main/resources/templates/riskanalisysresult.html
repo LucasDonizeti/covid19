@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency</title>
+</head>
+<body>
+<div>
+    <table>
+    <thead>
+    <tr>
+        <th>Probabilidade</th>
+        <th>Risco</th>
+        <th>Gravidade</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th th:text="${res.probabilidade} + '%'"></th>
+        <th th:text="${res.risco} + '%'"></th>
+        <th th:text="${res.gravidade} + '%'"></th>
+        <th th:text="${res.total} + '%'"></th>
+    </tr>
+    </tbody>
+    </table>
+</div>
+<div>
+    Idade: <span th:text="${data.idade}"></span><br>
+    Sexo:  <span th:if="${data.m == true}">Homem</span>
+    <span th:unless="${data.m == true}">Mulher</span>
+    <br>Sintomas:
+       <ul th:each="sintoma:${data.sintomas}">
+            <li th:if="${sintoma.condicao == true}" th:text="${sintoma.nome}"></li>
+        </ul>
+    <br>Doencas:
+    <ul th:each="doenca:${data.doenca}">
+        <li th:if="${doenca.condicao == true}" th:text="${doenca.nome}"></li>
+    </ul>
+
+</div>
+<a th:text="Home" th:href="@{/home}"/>
+</body>
+</html>

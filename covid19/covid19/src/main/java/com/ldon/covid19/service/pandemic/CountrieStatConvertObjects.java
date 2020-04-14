@@ -7,15 +7,15 @@ import java.util.List;
  */
 public class CountrieStatConvertObjects {
     private List<Csco> countries_stat;
-    private String country_name;
-    private String cases;
-    private String deaths;
-    private String total_recovered;
-    private String new_deaths;
-    private String new_cases;
-    private String serious_critical;
-    private String active_cases;
-    private String total_cases_per_1m_population;
+    private String country_name=" ";
+    private String cases="0";
+    private String deaths="0";
+    private String total_recovered="0";
+    private String new_deaths="0";
+    private String new_cases="0";
+    private String serious_critical="0";
+    private String active_cases="0";
+    private String total_cases_per_1m_population="0";
 
     public List<Csco> getCountries_stat() {
         return countries_stat;

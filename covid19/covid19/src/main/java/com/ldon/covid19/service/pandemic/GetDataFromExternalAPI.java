@@ -30,6 +30,8 @@ public class GetDataFromExternalAPI {
                 .setHeader("x-rapidapi-key", "f2f913f67cmsh0a10dab6f71d96dp17e2b0jsneb841f620a3a")
                 .build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.statusCode());
+        System.out.println(response.body());
         CountrieStatConvertObjects a = gson.fromJson(response.body(), CountrieStatConvertObjects.class);
         return conversion(a);
 
@@ -64,6 +66,11 @@ public class GetDataFromExternalAPI {
         for (String x : a) {
             aux += x;
         }
-        return Float.parseFloat(aux);
+
+        try {
+            return Float.parseFloat(aux);
+        }catch (Exception e){
+            return (float) 0;
+        }
     }
 }

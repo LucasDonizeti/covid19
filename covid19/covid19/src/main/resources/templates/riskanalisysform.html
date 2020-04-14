@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/LayoutPadrao">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency</title>
+</head>
+<body>
+<form>
+    <label>Idade</label>
+    <input type="number" name="idade" placeholder="Digite sua idade"><br>
+    <label>sexo:</label>
+    Masculino:
+    <input type="radio" name="isM" value=0>
+    Feminino:
+    <input type="radio" name="isM" value=1><br>
+    <h2>Sintomas</h2>
+    <div th:each="sintoma:${sintomas}">
+        <label th:text="${sintoma.nome}"></label><input type="checkbox" th:name="sintomas" th:value="${sintoma.id}"><br>
+    </div>
+    <h2>Doencas</h2>
+    <div th:each="doenca:${doencas}">
+        <label th:text="${doenca.nome}"></label><input type="checkbox" th:name="doencas" th:value="${doenca.id}"><br>
+    </div>
+    <input type="submit" formmethod="post">
+</form>
+</body>
+</html>
