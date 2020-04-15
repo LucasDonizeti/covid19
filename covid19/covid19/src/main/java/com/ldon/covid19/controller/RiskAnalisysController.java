@@ -3,9 +3,6 @@ package com.ldon.covid19.controller;
 import com.ldon.covid19.service.riskanalisys.Diagnostico;
 import com.ldon.covid19.service.riskanalisys.RiskAnalisys;
 import com.ldon.covid19.service.riskanalisys.RiskAnalisysData;
-import com.ldon.covid19.service.riskanalisys.Sintoma;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,42 +17,49 @@ import java.util.List;
 public class RiskAnalisysController {
 
     @GetMapping
-    public ModelAndView formulario(){
-        ModelAndView mv=new ModelAndView("/riskanalisysform");
+    public ModelAndView formulario() {
+        ModelAndView mv = new ModelAndView("/riskanalisysform");
         mv.addObject("sintomas", RiskAnalisys.getSintomas());
-        mv.addObject("doencas",RiskAnalisys.getDoenca());
-
+        mv.addObject("doencas", RiskAnalisys.getDoenca());
         return mv;
     }
 
     @PostMapping
-    public ModelAndView resultado(@ModelAttribute("rad")Rad rad){
+    public ModelAndView resultado(@ModelAttribute("rad") Rad rad) {
         List<String> s = rad.getSintomas();
-        List<Integer> scov=new ArrayList<>();
-        for (String a:s){
+        List<Integer> scov = new ArrayList<>();
+        for (String a : s) {
             scov.add(Integer.parseInt(a));
         }
-        s=rad.getDoencas();
-        List<Integer> dcov=new ArrayList<>();
-        for (String a:s){
+        s = rad.getDoencas();
+        List<Integer> dcov = new ArrayList<>();
+        for (String a : s) {
             dcov.add(Integer.parseInt(a));
         }
-        RiskAnalisysData radata = RiskAnalisys.radObjectConvert(dcov,scov,(rad.getIsM().equals("0")?true:false), Integer.parseInt(rad.getIdade()));
 
+        rad.getIsM();
+
+        RiskAnalisysData radata = RiskAnalisys.radObjectConvert(dcov, scov, (verifyNumber(rad.getIsM()).equals("0") ? true : false), Integer.parseInt(verifyNumber(rad.getIdade())));
         Diagnostico d = radata.calcularDiagnostico();
-
-
-        ModelAndView mv=new ModelAndView("/riskanalisysresult");
-        mv.addObject("data",radata);
+        ModelAndView mv = new ModelAndView("/riskanalisysresult");
+        mv.addObject("data", radata);
         mv.addObject("res", d);
         return mv;
     }
 
-    class Rad{
+    private static String verifyNumber(String s){
+        try{
+            int x=Integer.parseInt(s);
+            return String.valueOf(s);
+        }catch (Exception e){
+            return "0";
+        }
+    }
+    class Rad {
         private String idade;
         private String isM;
         private List<String> sintomas = new ArrayList<>();
-        private List<String> doencas=new ArrayList<>();
+        private List<String> doencas = new ArrayList<>();
 
         public Rad() {
         }

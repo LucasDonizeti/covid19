@@ -4,21 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-    <body>
-    Menu:
-    <a th:text="Covid19" th:href="@{/covid19/cases}"/>
-    <a th:text="Currency" th:href="@{/currency/price}"/>
-    <a th:text="Finance" th:href="@{/finance/indices}"/>
-    <a th:text="'Risk Analisys'" th:href="@{/riskanalisys}"/>
-    <br>
-    Breaking News:<br>
-    <p><a th:text="${notices[0].titulo}" th:href="${notices[0].link}"></a></p>
-    <h5 th:text="${notices[0].timestamp}"></h5><br>
-    <p><a th:text="${notices[1].titulo}" th:href="${notices[1].link}"></a></p>
-    <h5 th:text="${notices[1].timestamp}"></h5><br>
-    <p><a th:text="${notices[2].titulo}" th:href="${notices[2].link}"></a></p>
-    <h5 th:text="${notices[2].timestamp}"></h5><br>
-    <a th:text="'For more news'" th:href="@{/news/notices}"/>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bt-dark">
+    <a class="navbar-brand" href="#">Menu</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div>
+        <a class="nav-item nav-link" th:text="Covid19" th:href="@{/covid19/cases}"/>
+        <a class="nav-item nav-link" th:text="'Covid19 on Brazil'" th:href="@{/pandemicbr/state}"/>
+        <a class="nav-item nav-link" th:text="Currency" th:href="@{/currency/price}"/>
+        <a class="nav-item nav-link" th:text="Finance" th:href="@{/finance/indices}"/>
+        <a class="nav-item nav-link" th:text="'News'" th:href="@{/news/notices}"/>
+        <a class="nav-item nav-link" th:text="'Risk Analisys'" th:href="@{/riskanalisys}"/>
+    </div>
+</div>
+</nav>
+<br>
+Breaking News:<br>
+<p><a th:text="${notices[0].titulo}" th:href="${notices[0].link}"></a></p>
+<span th:text="${notices[0].timestamp}"></span><br>
+<p><a th:text="${notices[1].titulo}" th:href="${notices[1].link}"></a></p>
+<span th:text="${notices[1].timestamp}"></span><br>
+<p><a th:text="${notices[2].titulo}" th:href="${notices[2].link}"></a></p>
+<span th:text="${notices[2].timestamp}"></span><br>
+<a th:text="'For more news'" th:href="@{/news/notices}"/>
 </body>
 </html>

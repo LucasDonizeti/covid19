@@ -4,33 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Currency</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 currency quote:
-<table id="country-tb">
+<table id="country-tb" class="table table-dark">
     <thead>
     <tr>
-        <th>Code to Codein</th>
-        <th>Name</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Var Bird</th>
-        <th>Ptc Change</th>
-        <th>Create Date</th>
+        <th scope="col">Code to Codein</th>
+        <th scope="col">Name</th>
+        <th scope="col">High</th>
+        <th scope="col">Low</th>
+        <th scope="col">Var Bird</th>
+        <th scope="col">Ptc Change</th>
+        <th scope="col">Create Date</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="currency: ${currencyList}">
+    <tr th:each="currency: ${currencyList}" scope="row">
         <td th:text="${currency.code} + ' to ' + ${currency.codein}"></td>
-        <td th:text="${currency.name}"></td>
+        <th th:text="${currency.name}" scope="row"></th>
         <td th:text="${currency.high}"></td>
         <td th:text="${currency.low}"></td>
         <td th:text="${currency.varBid}"></td>
-        <td th:text="${currency.pctChange} + '%'"></td>
+        <td th:text="${currency.pctChange} + '%'"
+            th:style="'color: '+ (${currency.pctChange}>0?SpringGreen:(${currency.pctChange}<0?red:whrite))"></td>
         <td th:text="${currency.createDate}"></td>
     </tr>
     </tbody>
 </table>
 <a th:text="Home" th:href="@{/home}"/>
 </body>
+<style type="text/css">
+body{
+    background:rgb(10,10,10);
+    color:rgb(250,250,250)
+    }
+</style>
 </html>

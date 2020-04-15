@@ -1,17 +1,13 @@
 package com.ldon.covid19.controller;
 
-import com.ldon.covid19.model.CountriesStat;
-import com.ldon.covid19.model.CurrencyPrice;
-import com.ldon.covid19.model.Indice;
-import com.ldon.covid19.model.Notice;
-import com.ldon.covid19.repository.CountryRepository;
-import com.ldon.covid19.repository.CurrencyPriceRepository;
-import com.ldon.covid19.repository.IndiceRepository;
-import com.ldon.covid19.repository.NoticeRepository;
+import com.ldon.covid19.model.*;
+import com.ldon.covid19.repository.*;
 import com.ldon.covid19.service.currency.GetCurrencyFromAwesomeApi;
 import com.ldon.covid19.service.finance.GetFinanceFromYahoo;
 import com.ldon.covid19.service.news.GetNewsFromNbc;
 import com.ldon.covid19.service.pandemic.GetDataFromExternalAPI;
+import com.ldon.covid19.service.pandemicbr.CityAndStateData;
+import com.ldon.covid19.service.pandemicbr.PandemicBr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +33,10 @@ public class AdminController {
     public IndiceRepository indiceDAO;
     @Autowired
     public NoticeRepository noticeDAO;
+    @Autowired
+    public CityDataRepository cityDAO;
+    @Autowired
+    public StateDataRepository stateDAO;
 
     @GetMapping()
     public ModelAndView adminHome() {
@@ -103,11 +103,44 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/att/pandemicbr")
+    public ModelAndView savepandemicbr() {
+        Boolean x = savePandemicbr();
+        ModelAndView mv = new ModelAndView("/adminatt");
+        if (x) {
+            mv.addObject("horario", horarioAtual());
+            mv.addObject("modulo", "pandemicbr");
+            return mv;
+        } else {
+            mv.addObject("horario", horarioAtual());
+            mv.addObject("modulo", "Falha pandemicbr");
+            return mv;
+        }
+    }
+
 
     private String horarioAtual() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    private Boolean savePandemicbr() {
+        try {
+            CityAndStateData csd = PandemicBr.getCityAndStateDataList();
+            for (CityData cd : csd.getCityDataList()) {
+                System.out.println(cd.toString());
+                cityDAO.save(cd);
+            }
+            for (StateData sd : csd.getStateDataList()) {
+                System.out.println(sd.toString());
+                stateDAO.save(sd);
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("falha ao salvar city and state  - " + horarioAtual() + " - " + e);
+            return false;
+        }
     }
 
     private Boolean saveListIndice() {

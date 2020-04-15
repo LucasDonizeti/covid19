@@ -44,13 +44,4 @@ public class Diagnostico {
         total=(gravidade+risco+probabilidade)/3;
     }
 
-    @Override
-    public String toString() {
-        return "Diagnostico{" +
-                "gravidade=" + gravidade +
-                ", risco=" + risco +
-                ", probabilidade=" + probabilidade +
-                ", total=" + total +
-                '}';
-    }
 }

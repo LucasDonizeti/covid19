@@ -6,16 +6,24 @@
     <title>Pais</title>
 </head>
 <body>
-    <p th:text="'Cases of covid-19 on '+${data.country}+':'"></p>
-    <p th:text="'Cases: '+${data.cases}"></p>
-    <p th:text="'Deaths: '+${data.deaths}"></p>
-    <p th:text="'Total Recovered: '+${data.totalRecovered}"></p>
-    <p th:text="'New Deaths: '+${data.newDeaths}"></p>
-    <p th:text="'New cases: '+${data.newCases}"></p>
-    <p th:text="'Critical cases: '+${data.criticalCases}"></p>
-    <p th:text="'Active cases: '+${data.activeCases}"></p>
-    <p th:text="'% contaminated of population: '+${data.porcentageOfPop} + '%'"></p>
-    <p th:text="'Date Atualization: ' + ${data.dateAtt}"></p>
+<table>
+    <td th:text="'Cases of covid-19 on '+${data.country}+':'"></td>
+    <td th:text="'Cases: '+${data.cases}"></td>
+    <td th:text="'Deaths: '+${data.deaths}"></td>
+    <td th:text="'Total Recovered: '+${data.totalRecovered}"></td>
+    <td th:text="'New Deaths: '+${data.newDeaths}"></td>
+    <td th:text="'New cases: '+${data.newCases}"></td>
+    <td th:text="'Critical cases: '+${data.criticalCases}"></td>
+    <td th:text="'Active cases: '+${data.activeCases}"></td>
+    <td th:text="'% contaminated of population: '+${data.porcentageOfPop} + '%'"></td>
+    <td th:text="'Date Atualization: ' + ${data.dateAtt}"></td>
+</table>
     <a href="/covid19/cases">All countries</a>
 </body>
+<style type="text/css">
+body{
+    background:rgb(10,10,10);
+    color:rgb(250,250,250)
+    }
+</style>
 </html>

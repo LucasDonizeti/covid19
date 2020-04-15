@@ -4,29 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Currency</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 Finance:
-<table id="country-tb">
+<table id="country-tb" class="table table-dark">
     <thead>
     <tr>
-        <th>Symbol</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Var</th>
-        <th>%Var</th>
-        <th>Date Atualization</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Var</th>
+        <th scope="col">%Var</th>
+        <th scope="col">Date Atualization</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="indice: ${indiceList}">
-        <td th:text="${indice.simbolo}" style="color:blue"></td>
+    <tr th:each="indice: ${indiceList}" scope="row">
+        <th scope="row" th:text="${indice.simbolo}" style="color:blue"></th>
         <td th:text="${indice.nome}"></td>
         <td th:text="${indice.preco}"></td>
         <td th:text="${indice.variacao}"
-            th:style="'color: '+ (${indice.variacao}>0?green:(${indice.variacao}<0?red:black))"></td>
+            th:style="'color: '+ (${indice.variacao}>0?SpringGreen:(${indice.variacao}<0?red:whrite))"></td>
         <td th:text="${indice.variacaoRange} + '%'"
-            th:style="'color: '+ (${indice.variacaoRange}>0?green:(${indice.variacaoRange}<0?red:black))"></td>
+            th:style="'color: '+ (${indice.variacaoRange}>0?SpringGreen:(${indice.variacaoRange}<0?red:whrite))"></td>
         <td th:text="${indice.dateAtt}"></td>
     </tr>
     </tbody>
