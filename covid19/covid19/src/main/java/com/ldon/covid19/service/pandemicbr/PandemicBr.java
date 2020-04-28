@@ -28,7 +28,7 @@ public class PandemicBr {
         List<CityData> cd = new ArrayList<>();
         Gson gson = new Gson();
         HttpClient httpClient = HttpClient.newBuilder().build();
-        String nextlink = "https://brasil.io/api/dataset/covid19/caso/data?format=json&page=1";
+        String nextlink = "https://brasil.io/api/dataset/covid19/caso/data/?format=json&page=1";
 
         while (true) {
             System.out.println("GET: " + nextlink);
@@ -39,12 +39,14 @@ public class PandemicBr {
                     .build();
 
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.statusCode());
+            System.out.println("body:" + response.body());
             ResponseObject a = gson.fromJson(response.body(), ResponseObject.class);
-
             List<CityObject> results = a.getResults();
             for (CityObject x : results) {
-                if (x.isIs_last() && x.getCity_ibge_code()!=null) {
+                if (x.isIs_last() && x.getCity_ibge_code() != null) {
                     if (x.getCity() == null) {
+                        System.out.println(x.toString());
                         StateData std = new StateData();
                         std.setIbgeCode(x.getCity_ibge_code());
                         std.setConfirmed(x.getConfirmed());
@@ -54,6 +56,7 @@ public class PandemicBr {
                         std.setState(x.getState());
                         sd.add(std);
                     } else {
+                        System.out.println(x.toString());
                         CityData ctd = new CityData();
                         ctd.setCity(x.getCity());
                         ctd.setIbgeCode(x.getCity_ibge_code());
@@ -76,19 +79,10 @@ public class PandemicBr {
     }
 
     class ResponseObject {
-        private float count;
         private String next;
         private String previous = null;
 
         private ArrayList<CityObject> results = new ArrayList<>();
-
-        public float getCount() {
-            return count;
-        }
-
-        public void setCount(float count) {
-            this.count = count;
-        }
 
         public String getNext() {
             return next;
